@@ -21,9 +21,9 @@ fsPromises
           .stat(filePath)
           .then((el) =>
             console.log(
-              `File name: ${fileName.split(".")[0]} - ext: ${
-                fileExten.split(".")[1]
-              } - size: ${el.size}k`
+              `${fileName.split(".")[0]} - ${fileExten.split(".")[1]} - ${
+                el.size
+              }k`
             )
           );
       }
