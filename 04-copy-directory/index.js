@@ -9,12 +9,13 @@ async function readDir() {
     const arrLength = await fs.readdir(pathDest);
     if (arrLength.length > 0) {
       deleteDir();
-    }
-    const files = await fs.readdir(pathAbs);
-    for (const file of files) {
-      const curPath = path.join(__dirname, "files", file);
-      const newPath = path.join(__dirname, "files-copy", file);
-      copyFile(curPath, newPath);
+    } else {
+      const files = await fs.readdir(pathAbs);
+      for (const file of files) {
+        const curPath = path.join(__dirname, "files", file);
+        const newPath = path.join(__dirname, "files-copy", file);
+        copyFile(curPath, newPath);
+      }
     }
   } catch (err) {
     console.error(err);
