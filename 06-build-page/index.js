@@ -5,11 +5,7 @@ const pathDest = path.join(__dirname, "project-dist");
 const pathAbs = path.join(__dirname, "assets");
 const pathAsset = path.join(__dirname, "project-dist", "assets");
 const pathStylesAbs = path.join(__dirname, "styles");
-const pathStylesDestBundle = path.join(
-  __dirname,
-  "project-dist/styles",
-  "bundle.css"
-);
+const pathStylesDestBundle = path.join(__dirname, "project-dist", "style.css");
 
 async function readHtml() {
   try {
@@ -119,12 +115,6 @@ async function createBundle() {
   }
 }
 
-createDir(pathDest);
-createDir(pathAsset);
-createBundle();
-readHtml();
-delDir(pathAsset);
-
 async function delDir(props) {
   try {
     simpFS.rm(props, { recursive: true }, () => {
@@ -134,3 +124,9 @@ async function delDir(props) {
     console.error(err);
   }
 }
+
+createDir(pathDest);
+createDir(pathAsset);
+createBundle();
+readHtml();
+delDir(pathAsset);
